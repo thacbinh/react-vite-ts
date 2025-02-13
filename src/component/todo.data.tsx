@@ -24,7 +24,7 @@ const TodoData = (props: IProps) => {
             <div>{author}</div>
             {todos.map((todo) => {
                 return (
-                    <div key={todo.id}>
+                    <div key={todo.id} style={{ padding: "10px 0px" }}>
                         {todo.title}
                     </div>
                 )
