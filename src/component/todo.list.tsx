@@ -1,24 +1,18 @@
+import { useState } from "react"
 import TodoData from "./todo.data"
 import TodoInput from "./todo.input"
 
+interface ITodo {
+    id: number;
+    title: string;
+    isComplete: boolean;
+}
+
 const TodoList = () => {
-    const todos = [
-        {
-            id: 1,
-            title: "Learn React TypeScript",
-            isComplete: false
-        },
-        {
-            id: 2,
-            title: "Subscribe Youtube HoiDanIT",
-            isComplete: true
-        },
-        {
-            id: 3,
-            title: "Learn English",
-            isComplete: true
-        },
-    ]
+    const [todoList, setTodoList] = useState<ITodo[]>([])
+    const addTodo = (todo: ITodo) => {
+        setTodoList([...todoList, todo])
+    }
     return (
         <>
             <div style={{
@@ -39,10 +33,11 @@ const TodoList = () => {
                     My todo list:
                 </div>
                 <TodoInput
+                    addTodo={addTodo}
                     name={"binh"}
                 />
                 <TodoData
-                    todos={todos}
+                    todos={todoList}
                 // author={"binh"}
                 />
             </div>
